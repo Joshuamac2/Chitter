@@ -1,1 +1,1 @@
-# Chitter
+# Chitter - twitter clone
