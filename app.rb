@@ -1,11 +1,16 @@
 require 'sinatra/base'
+require_relative './lib/chitter'
 
-class Chitter < Sinatra::Base
+class ChitterManager < Sinatra::Base
 
   get '/' do
-    'Hello World'
+    'Welcome to Chitter!'
+  end
+
+  get '/tweet' do
+    @chitter = Chitter.all
+    erb :index
   end
 
   run! if app_file == $0
-
 end

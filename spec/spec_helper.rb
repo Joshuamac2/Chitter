@@ -9,7 +9,7 @@ require 'capybara/rspec'
 require 'rspec'
 
 # Tell Capybara to talk to BookmarkManager
-Capybara.app = Chitter
+Capybara.app = ChitterManager
 
 
 RSpec.configure do |config|
