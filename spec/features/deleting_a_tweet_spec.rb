@@ -4,7 +4,9 @@ feature 'Deleting a tweet' do
     visit('/tweet')
     expect(page).to have_content('My third tweet')
 
-    first('.chitter').click_button 'Delete'
+    first('.tweet').click_button 'Delete'
+    # .chitter is refering to @chitter in views?
+
 
     expect(current_path).to eq '/tweet'
     expect(page).not_to have_content('My third tweet')

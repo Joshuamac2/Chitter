@@ -28,5 +28,20 @@ class ChitterManager < Sinatra::Base
     redirect '/tweet'
   end
 
+  get '/tweet/:id/edit' do
+    @chitter = Chitter.find(id: params[:id])
+    erb :'tweets/edit'
+  end
+
+  patch '/tweet/:id' do
+    Chitter.update(id: params[:id], url: params[:url])
+    redirect('/tweet')
+  end
+
+  get '/bookmarks/:id/edit' do
+    @chitter = Chitter.find(id: params[:id])
+    erb :'tweets/edit'
+  end
+
   run! if app_file == $0
 end

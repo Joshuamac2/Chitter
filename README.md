@@ -17,3 +17,8 @@ As a user
 So I can remove my tweets from chitter
 I want to delete a tweet
 ```
+```
+As a user
+So I can change a tweet in Chitter
+I want to edit my tweet
+```

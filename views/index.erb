@@ -1,11 +1,14 @@
 <ul>
-  <% @chitter.each do |chitter| %>
-    <li class="chitter" id="chitter-<%= chitter.id %>">
-       <%= chitter.url %>
-      <form action="/tweet/<%= chitter.id %>" method="post">
-        <input type='hidden' name='_method' value='DELETE'/>
-        <input type="submit" value="Delete" />
-      </form>
-    </li>
-  <% end %>
-</ul>
+  <% @chitter.each do |tweet| %>
+    <li class="tweet" id="tweet-<%= tweet.id %>">
+      <a> "<%= tweet.url %>" </a>
+      <form action="/tweet/<%= tweet.id %>" method="post">
+         <input type='hidden' name='_method' value='DELETE'/>
+         <input type="submit" value="Delete" />
+       </form>
+       <form action="/tweet/<%= tweet.id %>/edit" method="get">
+         <input type="submit" value="Edit" />
+       </form>
+     </li>
+   <% end %>
+ </ul>
