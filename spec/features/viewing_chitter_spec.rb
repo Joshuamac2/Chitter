@@ -10,11 +10,8 @@ feature 'Viewing homepage' do
 
    feature 'viewing tweets' do
      scenario 'tweets are visible' do
-       connection = PG.connect(dbname: 'chitter_test')
-
-       connection.exec("INSERT INTO TWEETS (URL) VALUES ('My first tweet');")
-       connection.exec("INSERT INTO TWEETS (URL) VALUES ('My second tweet');")
-
+       Chitter.create(url: 'My first tweet')
+       Chitter.create(url: 'My second tweet')
        visit '/tweet'
 
        expect(page).to have_content 'My first tweet'

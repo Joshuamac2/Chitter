@@ -12,5 +12,14 @@ class ChitterManager < Sinatra::Base
     erb :index
   end
 
+  get '/tweet/new' do
+    erb :"tweets/new"
+  end
+
+  post '/tweet' do
+    Chitter.create(url: params[:url])
+    redirect '/tweet'
+  end
+
   run! if app_file == $0
 end
