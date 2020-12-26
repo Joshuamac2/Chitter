@@ -12,3 +12,8 @@ As a user
 So I can store my tweets as data for later retrieval
 I want to add tweets to my Chitter
 ```
+```
+As a user
+So I can remove my tweets from chitter
+I want to delete a tweet
+```

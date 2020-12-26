@@ -31,4 +31,13 @@ class Chitter
     result = connection.exec("INSERT INTO tweets (url) VALUES('#{url}') RETURNING id, url;")
     Chitter.new(id: result[0]['id'], url: result[0]['url'])
   end
+
+  def self.delete(id:)
+    if ENV['ENVIRONMENT'] =='test'
+      connection = PG.connect(dbname: 'chitter_test')
+    else
+      connection = PG.connect(dbname: 'chitter')
+    end
+    connection.exec("DELETE FROM tweets WHERE id = #{id}")
+  end
 end

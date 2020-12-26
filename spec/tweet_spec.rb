@@ -4,7 +4,6 @@ require 'database_helpers'
 describe Chitter do
   describe '.all' do
     it 'returns all my tweets' do
-      connection = PG.connect(dbname: 'chitter_test')
 
       chitters = Chitter.create(url: 'My first tweet')
 
@@ -25,6 +24,14 @@ describe Chitter do
       expect(chitter).to be_a Chitter
       expect(chitter.id).to eq persisted_data.first['id']
       expect(chitter.url).to eq 'My first tweet'
+    end
+  end
+
+  describe '.delete' do
+    it 'deletes the tweets' do
+      chitter = Chitter.create(url: "My first tweet")
+      Chitter.delete(id: chitter.id)
+      expect(Chitter.all.length). to eq 0
     end
   end
 end

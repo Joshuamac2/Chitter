@@ -3,6 +3,8 @@ require_relative './lib/chitter'
 
 class ChitterManager < Sinatra::Base
 
+  enable :sessions, :method_override
+
   get '/' do
     'Welcome to Chitter!'
   end
@@ -18,6 +20,11 @@ class ChitterManager < Sinatra::Base
 
   post '/tweet' do
     Chitter.create(url: params[:url])
+    redirect '/tweet'
+  end
+
+  delete '/tweet/:id' do
+    Chitter.delete(id: params[:id])
     redirect '/tweet'
   end
 
