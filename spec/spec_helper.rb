@@ -11,6 +11,7 @@ require 'rspec'
 require_relative './setup_test_database.rb'
 
 
+
 # Tell Capybara to talk to BookmarkManager
 Capybara.app = ChitterManager
 

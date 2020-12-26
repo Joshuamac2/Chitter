@@ -4,6 +4,6 @@ feature 'Adding a tweet' do
     fill_in('url', with: 'My third tweet')
     click_button('Submit')
 
-    expect(page).to have_content 'My third tweet'
+    expect(page).to have_content('My third tweet')
   end
 end

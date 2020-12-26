@@ -10,5 +10,5 @@ I would like to see a list of Chits
 ```
 As a user
 So I can store my tweets as data for later retrieval
-I want to add tweets to my Chitter 
+I want to add tweets to my Chitter
 ```
