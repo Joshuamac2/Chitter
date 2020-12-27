@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require_relative './lib/chitter'
+require_relative '/Users/joshua/makers/chitter/spec/features/database_connection_spec.rb'
 
 class ChitterManager < Sinatra::Base
 
