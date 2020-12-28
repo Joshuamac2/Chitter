@@ -27,3 +27,9 @@ As a user
 So I can add to a tweet
 I want to comment on a tweet
 ```
+
+```
+As a user
+So that I can categorize my tweets
+I want to add a Tag to a tweet
+```

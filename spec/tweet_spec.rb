@@ -3,6 +3,7 @@ require 'database_helpers'
 
 describe Chitter do
   let(:comment_class) { double(:comment_class) }
+  let(:tag_class) { double(:tag_class) }
 
   describe '.all' do
     it 'returns all my tweets' do
@@ -65,6 +66,15 @@ describe Chitter do
       expect(comment_class).to receive(:where).with(tweet_id: chitter.id)
 
       chitter.comments(comment_class)
+    end
+  end
+
+  describe '#tags' do
+    it 'calls .where on the Tag class' do
+      chitter = Chitter.create(url: 'My first tweet')
+      expect(tag_class).to receive(:where).with(tweet_id: chitter.id)
+
+      chitter.tags(tag_class)
     end
   end
 end
