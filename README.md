@@ -22,3 +22,8 @@ As a user
 So I can change a tweet in Chitter
 I want to edit my tweet
 ```
+```
+As a user
+So I can add to a tweet
+I want to comment on a tweet
+```

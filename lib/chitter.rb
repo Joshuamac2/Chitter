@@ -1,5 +1,6 @@
 require 'pg'
 require_relative 'database_connection'
+require_relative 'comment'
 
 class Chitter
 
@@ -11,8 +12,8 @@ class Chitter
   end
 
   def self.all
-    result = DatabaseConnection.query("SELECT * FROM tweets")
-    result.map do |tweet|
+    tweets = DatabaseConnection.query("SELECT * FROM tweets")
+    tweets.map do |tweet|
       Chitter.new(
         url: tweet['url'],
         id: tweet['id']
@@ -38,5 +39,9 @@ class Chitter
   def self.find(id:)
     result = DatabaseConnection.query("SELECT * FROM tweets WHERE id = #{id}")
     Chitter.new(id: result[0]['id'], url: result[0]['url'])
+  end
+
+  def comments(comment_class = Comment)
+    comment_class.where(tweet_id: id)
   end
 end

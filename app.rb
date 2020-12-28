@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require_relative './lib/chitter'
 require_relative '/Users/joshua/makers/chitter/spec/features/database_connection_spec.rb'
+require_relative './lib/comment'
 
 class ChitterManager < Sinatra::Base
 
@@ -39,9 +40,14 @@ class ChitterManager < Sinatra::Base
     redirect('/tweet')
   end
 
-  get '/bookmarks/:id/edit' do
-    @chitter = Chitter.find(id: params[:id])
-    erb :'tweets/edit'
+  get '/tweet/:id/comments/new' do
+    @tweet_id = params[:id]
+    erb :'comments/new'
+  end
+
+  post '/tweet/:id/comments' do
+    Comment.create(text: params[:comment], tweet_id: params[:id])
+    redirect '/tweet'
   end
 
   run! if app_file == $0

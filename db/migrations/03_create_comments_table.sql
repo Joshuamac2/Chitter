@@ -1,0 +1,1 @@
+CREATE TABLE comments(id SERIAL PRIMARY KEY, text VARCHAR(240), tweet_id INTEGER REFERENCES tweets (id));

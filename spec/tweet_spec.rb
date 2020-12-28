@@ -2,6 +2,8 @@ require 'chitter'
 require 'database_helpers'
 
 describe Chitter do
+  let(:comment_class) { double(:comment_class) }
+
   describe '.all' do
     it 'returns all my tweets' do
 
@@ -19,7 +21,7 @@ describe Chitter do
   describe '.create' do
     it 'creates a new tweet' do
       chitter = Chitter.create(url: 'My first tweet')
-      persisted_data =  persisted_data(id: chitter.id)
+      persisted_data =  persisted_data(id: chitter.id, table: 'tweets')
 
       expect(chitter).to be_a Chitter
       expect(chitter.id).to eq persisted_data.first['id']
@@ -54,6 +56,15 @@ describe Chitter do
       expect(result).to be_a Chitter
       expect(result.id).to eq chitter.id
       expect(result.url).to eq 'My first tweet'
+    end
+  end
+
+  describe '#comments' do
+    it 'calls .where on the Comment class' do
+      chitter = Chitter.create(url: 'My first tweet')
+      expect(comment_class).to receive(:where).with(tweet_id: chitter.id)
+
+      chitter.comments(comment_class)
     end
   end
 end
