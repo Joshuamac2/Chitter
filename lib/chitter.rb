@@ -50,4 +50,11 @@ class Chitter
   def tags(tag_class = Tag)
     tag_class.where(tweet_id: id)
   end
+
+  def self.where(tag_id:)
+    result = DatabaseConnection.query("SELECT id, url FROM tweet_tags INNER JOIN tweets ON tweets.id = tweet_tags.tweet_id WHERE tweet_tags.tag_id = '#{tag_id}';")
+    result.map do |tweet|
+      Chitter.new(id: tweet['id'], url: tweet['url'])
+    end
+  end
 end

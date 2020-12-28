@@ -63,6 +63,10 @@ class ChitterManager < Sinatra::Base
      redirect '/tweet'
    end
 
+   get '/tags/:id/tweet' do
+     @tag = Tag.find(id: params['id'])
+     erb :'tags/index'
+   end
 
   run! if app_file == $0
 end

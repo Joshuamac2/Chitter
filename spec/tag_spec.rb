@@ -1,8 +1,12 @@
 require 'tag'
- require 'chitter'
- require 'database_helpers'
+require 'chitter'
+require 'database_helpers'
+require 'tweet_tag'
 
 describe Tag do
+
+  let(:tweet_class) { double(:tweet_class) }
+
   describe '.create' do
     it 'creates a new Tag' do
       tag = Tag.create(content: 'test tag')
@@ -12,6 +16,13 @@ describe Tag do
       expect(tag).to be_a Tag
       expect(tag.id).to eq persisted_data.first['id']
       expect(tag.content).to eq 'test tag'
+    end
+
+    it 'returns the existing tag' do
+      tag1 = Tag.create(content: 'test tag')
+      tag2 = Tag.create(content: 'test tag')
+
+      expect(tag2.id).to eq tag1.id
     end
   end
 

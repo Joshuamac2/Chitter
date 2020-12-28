@@ -33,3 +33,8 @@ As a user
 So that I can categorize my tweets
 I want to add a Tag to a tweet
 ```
+```
+As a user
+So that I can find relevant tweets
+I want to filter though tweets by a Tag
+```

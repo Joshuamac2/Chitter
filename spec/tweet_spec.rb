@@ -77,4 +77,22 @@ describe Chitter do
       chitter.tags(tag_class)
     end
   end
+
+  describe '.where' do
+     it 'finds tweets with tag id' do
+       chitter = Chitter.create(url: "My first tweet")
+       tag1 = Tag.create(content: 'test tag 1')
+       tag2 = Tag.create(content: 'test tag 2')
+       TweetTag.create(tweet_id: chitter.id, tag_id: tag1.id)
+       TweetTag.create(tweet_id: chitter.id, tag_id: tag2.id)
+
+       chitters = Chitter.where(tag_id: tag1.id)
+       result = chitters.first
+
+       expect(chitters.length).to eq 1
+       expect(result).to be_a Chitter
+       expect(result.id).to eq chitter.id
+       expect(result.url).to eq chitter.url
+     end
+   end
 end
