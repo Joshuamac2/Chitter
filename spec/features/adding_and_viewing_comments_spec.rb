@@ -4,7 +4,7 @@ feature 'Adding and viewing comments' do
       chitter = Chitter.create(url: 'My first tweet')
 
       visit '/tweet'
-      first('.tweet').click_button 'Add comment'
+      first('.tweet').click_button 'Add Comment'
 
       expect(current_path).to eq "/tweet/#{chitter.id}/comments/new"
 

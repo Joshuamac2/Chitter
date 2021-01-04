@@ -15,7 +15,7 @@ require_relative './database_connection'
      result = DatabaseConnection.query("INSERT INTO users (email, password) VALUES('#{email}', '#{encrypted_password}') RETURNING id, email;")
      User.new(
        id: result[0]['id'],
-       email: result[0]['email'],
+       email: result[0]['email']
      )
    end
 
@@ -30,6 +30,13 @@ require_relative './database_connection'
 
    def self.authenticate(email:, password:)
      result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}'")
-     User.new(id: result[0]['id'], email: result[0]['email'])
+
+     return unless result.any?
+     return unless BCrypt::Password.new(result[0]['password']) == password
+
+     User.new(
+       id: result[0]['id'],
+       email: result[0]['email']
+      )
    end
 end

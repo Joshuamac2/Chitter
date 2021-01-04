@@ -1,38 +1,41 @@
 <% if @user %>
    <h1>Welcome, <%= @user.email %></h1>
+   <form action="/sessions/destroy" method="post">
+     <input type="submit" value="Sign out" />
+   </form>
  <% end %>
-<ul>
-   <% @chitter.each do |tweet| %>
-     <li class="tweet" id="tweet-<%= tweet.id %>">
-      <a> <%= tweet.url %> </a>
-      <form action="/tweet/<%= tweet.id %>" method="post">
+ <ul>
+   <% @chitter.each do |tweets| %>
+    <li class="tweet" id="tweet-<%= tweets.id %>">
+      <%= tweets.url %>
+      <form action="/tweet/<%= tweets.id %>" method="post">
         <input type='hidden' name='_method' value='DELETE'/>
         <input type="submit" value="Delete" />
       </form>
-      <form action="/tweet/<%= tweet.id %>/edit" method="get">
+      <form action="/tweet/<%= tweets.id %>/edit" method="get">
         <input type="submit" value="Edit" />
       </form>
-      <form action="/tweet/<%= tweet.id %>/comments/new" method="get">
-        <input type="submit" value="Add comment" />
+      <form action="/tweet/<%= tweets.id %>/comments/new" method="get">
+        <input type="submit" value="Add Comment" />
       </form>
-       <form action="/tweet/<%= tweet.id %>/tags/new" method="get">
-         <input type="submit" value="Add Tag" />
-       </form>
-       <% if tweet.comments.length > 0 %>
-         <div>
-           <h2>Comments</h2>
-           <ul>
-             <% tweet.comments.each do |comment| %>
-               <li><%= comment.text %></li>
-             <% end %>
-           </ul>
-         </div>
-       <% end %>
-       <% if tweet.tags.length > 0 %>
-         <div>
-           <h2>Tags</h2>
+      <form action="/tweet/<%= tweets.id %>/tags/new" method="get">
+        <input type="submit" value="Add Tag" />
+      </form>
+      <% if tweets.comments.length > 0 %>
+        <div>
+          <h2>Comments</h2>
           <ul>
-            <% tweet.tags.each do |tag| %>
+            <% tweets.comments.each do |comment| %>
+              <li><%= comment.text %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <% if tweets.tags.length > 0 %>
+        <div>
+          <h2>Tags</h2>
+          <ul>
+            <% tweets.tags.each do |tag| %>
               <li>
                 <a href="/tags/<%= tag.id %>/tweet">
                   <%= tag.content %>
@@ -45,3 +48,6 @@
     </li>
   <% end %>
 </ul>
+<h2>
+  <%= flash[:notice] %>
+</h2>

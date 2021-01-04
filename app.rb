@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'sinatra/flash'
 require_relative './lib/chitter'
 require_relative '/Users/joshua/makers/chitter/spec/features/database_connection_spec.rb'
 require_relative './lib/comment'
@@ -9,6 +10,7 @@ require_relative './lib/user'
 class ChitterManager < Sinatra::Base
 
   enable :sessions, :method_override
+  register Sinatra::Flash
 
   get '/' do
     'Welcome to Chitter!'
@@ -86,7 +88,18 @@ class ChitterManager < Sinatra::Base
 
    post '/sessions' do
      user = User.authenticate(email: params[:email], password: params[:password])
-     session[:user_id] = user.id
+     if user
+       session[:user_id] = user.id
+       redirect('/tweet')
+     else
+       flash[:notice] = 'Incorrect email or password'
+       redirect('/sessions/new')
+     end
+   end
+
+   post '/sessions/destroy' do
+     session.clear
+     flash[:notice] = 'Successfully signed out'
      redirect('/tweet')
    end
 
