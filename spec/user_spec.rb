@@ -20,17 +20,25 @@ require 'database_helpers'
      end
    end
 
-
    describe '.find' do
      it 'finds a user by ID' do
        user = User.create(email: 'test@example.com', password: 'password123')
        result = User.find(id: user.id)
 
        expect(result.id).to eq user.id
-       expect(result.email).to rq user.email
+       expect(result.email).to eq user.email
      end
      it 'returns nil if there is no ID given' do
-       expect(User.find(nil)).to eq nil
+       expect(User.find(id: nil)).to eq nil
+     end
+   end
+
+   describe '.authenticate' do
+     it 'returns a user given a correct username and password, if one exists' do
+       user = User.create(email: 'test@example.com', password: 'password123')
+       authenticated_user = User.authenticate(email: 'test@example.com', password: 'password123')
+
+       expect(authenticated_user.id).to eq user.id
      end
    end
 end

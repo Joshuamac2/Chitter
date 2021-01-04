@@ -15,7 +15,7 @@ class ChitterManager < Sinatra::Base
   end
 
   get '/tweet' do
-    @user = User.find(session[:user_id])
+    @user = User.find(id: session[:user_id])
     @chitter = Chitter.all
     erb :'chitter/index'
   end
@@ -50,7 +50,7 @@ class ChitterManager < Sinatra::Base
   end
 
   post '/tweet/:id/comments' do
-    Comment.create(text: params[:comment], tweet_id: params[:id])
+    Comment.create(tweet_id: params[:id], text: params[:comment])
     redirect '/tweet'
   end
 
@@ -75,9 +75,19 @@ class ChitterManager < Sinatra::Base
    end
 
    post '/users' do
-     user = User.create(email: params[:email], password: params[:password])
+     user = User.create(email: params['email'], password: params['password'])
      session[:user_id] = user.id
      redirect '/tweet'
+   end
+
+   get '/sessions/new' do
+     erb :"sessions/new"
+   end
+
+   post '/sessions' do
+     user = User.authenticate(email: params[:email], password: params[:password])
+     session[:user_id] = user.id
+     redirect('/tweet')
    end
 
   run! if app_file == $0
