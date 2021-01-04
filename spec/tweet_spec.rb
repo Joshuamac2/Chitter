@@ -1,5 +1,7 @@
 require 'chitter'
 require 'database_helpers'
+require 'tag'
+require 'tweet_tag'
 
 describe Chitter do
   let(:comment_class) { double(:comment_class) }

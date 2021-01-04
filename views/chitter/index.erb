@@ -1,0 +1,47 @@
+<% if @user %>
+   <h1>Welcome, <%= @user.email %></h1>
+ <% end %>
+<ul>
+   <% @chitter.each do |tweet| %>
+     <li class="tweet" id="tweet-<%= tweet.id %>">
+      <a> <%= tweet.url %> </a>
+      <form action="/tweet/<%= tweet.id %>" method="post">
+        <input type='hidden' name='_method' value='DELETE'/>
+        <input type="submit" value="Delete" />
+      </form>
+      <form action="/tweet/<%= tweet.id %>/edit" method="get">
+        <input type="submit" value="Edit" />
+      </form>
+      <form action="/tweet/<%= tweet.id %>/comments/new" method="get">
+        <input type="submit" value="Add comment" />
+      </form>
+       <form action="/tweet/<%= tweet.id %>/tags/new" method="get">
+         <input type="submit" value="Add Tag" />
+       </form>
+       <% if tweet.comments.length > 0 %>
+         <div>
+           <h2>Comments</h2>
+           <ul>
+             <% tweet.comments.each do |comment| %>
+               <li><%= comment.text %></li>
+             <% end %>
+           </ul>
+         </div>
+       <% end %>
+       <% if tweet.tags.length > 0 %>
+         <div>
+           <h2>Tags</h2>
+          <ul>
+            <% tweet.tags.each do |tag| %>
+              <li>
+                <a href="/tags/<%= tag.id %>/tweet">
+                  <%= tag.content %>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

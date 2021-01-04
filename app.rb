@@ -4,6 +4,7 @@ require_relative '/Users/joshua/makers/chitter/spec/features/database_connection
 require_relative './lib/comment'
 require_relative './lib/tag'
 require_relative './lib/tweet_tag'
+require_relative './lib/user'
 
 class ChitterManager < Sinatra::Base
 
@@ -14,8 +15,9 @@ class ChitterManager < Sinatra::Base
   end
 
   get '/tweet' do
+    @user = User.find(session[:user_id])
     @chitter = Chitter.all
-    erb :index
+    erb :'chitter/index'
   end
 
   get '/tweet/new' do
@@ -66,6 +68,16 @@ class ChitterManager < Sinatra::Base
    get '/tags/:id/tweet' do
      @tag = Tag.find(id: params['id'])
      erb :'tags/index'
+   end
+
+   get '/users/new' do
+     erb :"users/new"
+   end
+
+   post '/users' do
+     user = User.create(email: params[:email], password: params[:password])
+     session[:user_id] = user.id
+     redirect '/tweet'
    end
 
   run! if app_file == $0
