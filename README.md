@@ -38,3 +38,4 @@ As a user
 So that I can find relevant tweets
 I want to filter though tweets by a Tag
 ```
+![Alt text](public/1st_draft_home_page.png?raw=true "Home page")

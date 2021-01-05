@@ -1,0 +1,38 @@
+
+
+.sign-in {
+  position: absolute;
+  top: 400px;
+  right: 0;
+  width: 500px;
+  height: 100px;
+}
+
+.sign-up {
+  position: absolute;
+  top: 330px;
+  right: 0;
+  width: 500px;
+  height: 80px;
+}
+
+body {
+  background-image: url("./images/homebanner.png");
+}
+
+p.Chittering {
+  position: absolute;
+  right: 0;
+  left: 800px;
+  top: 200px;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  width: 350px;
+  color: #a4eb9d;
+}
+
+input {
+  color: green;
+  padding: 5px 10px;
+  background-color: #e3fce1;
+}

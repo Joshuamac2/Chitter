@@ -13,7 +13,7 @@ class ChitterManager < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
-    'Welcome to Chitter!'
+    erb :"home/index"
   end
 
   get '/tweet' do
@@ -72,14 +72,18 @@ class ChitterManager < Sinatra::Base
      erb :'tags/index'
    end
 
-   get '/users/new' do
+   get '/users' do
      erb :"users/new"
    end
+
+   # get '/users/new' do
+   #   erb :"users/new"
+   # end
 
    post '/users' do
      user = User.create(email: params['email'], password: params['password'])
      session[:user_id] = user.id
-     redirect '/tweet'
+     # redirect '/tweet'
    end
 
    get '/sessions/new' do
