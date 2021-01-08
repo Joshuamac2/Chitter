@@ -1,4 +1,7 @@
-
+.pic {
+  width: 750px;
+  height: 700px;
+}
 
 .sign-in {
   position: absolute;
@@ -16,10 +19,6 @@
   height: 80px;
 }
 
-body {
-  background-image: url("./images/homebanner.png");
-}
-
 p.Chittering {
   position: absolute;
   right: 0;
@@ -28,11 +27,13 @@ p.Chittering {
   font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
   font-size: 2rem;
   width: 350px;
-  color: #a4eb9d;
+  color: #87CEFA;
 }
 
 input {
-  color: green;
+  color: white;
   padding: 5px 10px;
-  background-color: #e3fce1;
+  background-color: #87CEFA;
+  border: 2px solid white;
+  border-radius: 10px;
 }

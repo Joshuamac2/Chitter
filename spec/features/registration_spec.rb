@@ -3,7 +3,7 @@ feature 'registration' do
     visit '/users/new'
     fill_in('email', with: 'josh@live.com')
     fill_in('password', with: 'joshmac')
-    click_button('Submit')
+    click_button('Sign up')
 
     expect(page).to have_content "Welcome, josh@live.com"
   end

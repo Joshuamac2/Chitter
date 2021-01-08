@@ -3,26 +3,22 @@
  <head>
   <title>Chitter</title>
   <link rel="stylesheet" href="/css/style.css">
+  <img class="pic" src="./home.png">
  </head>
  <body>
    <p class="Chittering"> See what's everyone
      Chittering about today? </p>
-
-   <form action="/sessions" method="post">
+   <form action="/users" method="get">
+     <div class="sign-up">
+       <p>Join Chitter today</p>
+      <input type="submit" value="Sign up">
+      </div>
+   </form>
+   <form action="/sessions/new" method="get">
      <div class="sign-in">
        <p>Sign in</p>
       <input type="submit" value="Sign in"/>
       </div>
    </form>
-
-   <form action="/users" method="post">
-     <div class="sign-up">
-       <p>Join Chitter today.</p>
-      <!-- <input type="email" name="email" placeholder="Email">
-      <input type="password" name="password" placeholder="Password"> -->
-      <input type="submit" value="Sign up">
-      </div>
-   </form>
-   <img src="./homebanner.png" style="width: 700px; height: 700px;">
  </body>
 </html>

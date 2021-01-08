@@ -1,5 +1,8 @@
 # Chitter - twitter clone
 
+![Alt text](public/homepage.png?raw=true "Home page")
+![Alt text](public/mainpage.png?raw=true "Home page")
+
 #User stories
 
 ```
@@ -38,4 +41,22 @@ As a user
 So that I can find relevant tweets
 I want to filter though tweets by a Tag
 ```
-![Alt text](public/1st_draft_home_page.png?raw=true "Home page")
+
+
+## How to use
+##(1) Clone this repository and run
+
+```
+bundle
+```
+###(2) Connect to psql and create databases
+```
+CREATE DATABASE chitter;
+CREATE DATABASE chitter_test;
+```
+###(3) Table setup 
+Connect to both databases and copy the SQL scripts in given order from `db/migrations`
+### To run the Bookmark Manager app:
+```
+rackup
+```

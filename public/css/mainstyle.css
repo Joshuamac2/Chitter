@@ -1,0 +1,159 @@
+.pic {
+  position: fixed;
+  top: 0px;
+  z-index: -10
+}
+
+.pic2 {
+  position: absolute;
+  top: -70px;
+  right: 500px;
+  z-index: -10
+}
+.welcome {
+  padding: 0px;
+  color: bold white;
+  font-size: 20px;
+}
+
+#mytext {
+  position: relative;
+  margin: auto;
+  width: 400px;
+  top: 40px;
+  right: 5px;
+
+  padding: 20px 30px;
+  box-sizing: border-box;
+  border: 6px solid #F0F8FF;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 16px;
+}
+
+.tweet {
+  position: relative;
+  margin: auto;
+  width: 400px;
+  top: 60px;
+  right: 0.5%;
+
+  padding: 4px 5px;
+  box-sizing: border-box;
+  border: 4px solid #F0F8FF;
+  border-radius: 15px;
+  background-color: white;
+  font-size: 16px;
+  box-shadow: 8px 8px #F0F8FF;
+
+}
+
+.tags {
+  position: relative;
+  left: 950px;
+
+  box-sizing: border-box;
+  background-color: white;
+  font-size: 20px;
+  display:table;
+}
+
+p.hashtagtext {
+  position: absolute;
+  right: 220px;
+  top: 250px;
+  font-size: 25px;
+}
+
+p.hashtagborder {
+  position: absolute;
+  right: 200px;
+  top: 250px;
+  width: 150px;
+  height: 400px;
+
+  box-sizing: border-box;
+  box-shadow: 8px 8px #F0F8FF;
+  background-color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  z-index: -10
+}
+
+#text {
+  width: 250px;
+  height: 50px;
+  border: 2px solid #ccc;
+}
+
+#submit{
+  background-color: #87CEFA;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 5px;
+  border: 2px solid white;
+}
+
+#submit:hover {
+    background-color: #87CEFA;
+    color: white;
+}
+
+#delete {
+  position: relative;
+  top: 50px;
+  background-color: white;
+  border: 2px solid #87CEFA;
+  border-radius: 10px;
+  color: #87CEFA;
+}
+
+#edit {
+  position: relative;
+  left: 60px;
+  top: 29px;
+  background-color: white;
+  border: 2px solid #87CEFA;
+  border-radius: 10px;
+  color: #87CEFA;
+}
+
+#addcomment {
+  position: relative;
+  left: 105px;
+  top: 8px;
+  background-color: white;
+  border: 2px solid #87CEFA;
+  border-radius: 10px;
+  color: #87CEFA;
+}
+
+#addtag {
+  position: relative;
+  left: 210px;
+  top: -13px;
+  background-color: white;
+  border: 2px solid #87CEFA;
+  border-radius: 10px;
+  color: #87CEFA;
+}
+
+#signout {
+  position: relative;
+  right: 0px;
+  top: 0px;
+  background-color: white;
+  border: 2px solid #87CEFA;
+  border-radius: 10px;
+  color: #87CEFA;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tags:empty {
+  display:none;
+}

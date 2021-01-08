@@ -1,50 +1,64 @@
-<% if @user %>
-   <h1>Welcome, <%= @user.email %></h1>
- <% end %>
- <ul>
-   <% @chitter.each do |tweets| %>
-    <li class="tweet" id="tweet-<%= tweets.id %>">
-      <%= tweets.url %>
-      <form action="/tweet/<%= tweets.id %>" method="post">
-        <input type='hidden' name='_method' value='DELETE'/>
-        <input type="submit" value="Delete" />
-      </form>
-      <form action="/tweet/<%= tweets.id %>/edit" method="get">
-        <input type="submit" value="Edit" />
-      </form>
-      <form action="/tweet/<%= tweets.id %>/comments/new" method="get">
-        <input type="submit" value="Add Comment" />
-      </form>
-      <form action="/tweet/<%= tweets.id %>/tags/new" method="get">
-        <input type="submit" value="Add Tag" />
-      </form>
-      <% if tweets.comments.length > 0 %>
-        <div>
-          <h2>Comments</h2>
-          <ul>
-            <% tweets.comments.each do |comment| %>
-              <li><%= comment.text %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <% if tweets.tags.length > 0 %>
-        <div>
-          <h2>Tags</h2>
-          <ul>
-            <% tweets.tags.each do |tag| %>
-              <li>
-                <a href="/tags/<%= tag.id %>/tweet">
-                  <%= tag.content %>
-                </a>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-    </li>
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Chitter</title>
+  <link rel="stylesheet" href="/css/mainstyle.css" type="text/css" />
+  <img class="pic" src="./sky.png" style="width: 1300px; height: 550px;">
+  <!-- <img class="pic2" src="./cloud.png" style="width: 350px; height: 280px;"> -->
+
+ </head>
+
+ <div class="welcome" >
+ <% if @user %>
+    <h2> Welcome <%= @user.email %> !</h2>
+    <form action="/sessions/destroy" method="post">
+      <input type="submit" value="Sign out" id="signout" />
+    </form>
   <% end %>
-</ul>
-<h2>
-  <%= flash[:notice] %>
-</h2>
+  </div>
+ <body>
+   <ul>
+     <div id="mytext">
+     <form action="/tweet" method="post">
+       <input type="text" name="url" placeholder="Whats happening?" id="text" />
+       <input type="submit" value="Submit" id="submit" />
+     </form>
+   </div>
+     <% @chitter.each do |tweets| %>
+      <li class="tweet" id="tweet-<%= tweets.id %>">
+        <%= tweets.url %>
+        <form action="/tweet/<%= tweets.id %>" method="post">
+          <input type='hidden' name='_method' value='DELETE'/>
+          <input type="submit" value="Delete" id="delete" />
+        </form>
+        <form action="/tweet/<%= tweets.id %>/edit" method="get">
+          <input type="submit" value="Edit" id="edit" />
+        </form>
+        <form action="/tweet/<%= tweets.id %>/comments/new" method="get">
+          <input type="submit" value="Add Comment" id="addcomment" />
+        </form>
+        <form action="/tweet/<%= tweets.id %>/tags/new" method="get">
+          <input type="submit" value="Add Tag" id="addtag" />
+        </form>
+      </li>
+      <div class="tags">
+      <% if tweets.tags.length > 0 %>
+            <% tweets.tags.each do |tag| %>
+                <a href="/tags/<%= tag.id %>/tweet" >
+                  <%= tag.content  %>
+                </a>
+            <% end %>
+      <% end %>
+    </div>
+
+  <% end %>
+   </ul>
+   <p class="hashtagborder"></p>
+   <p class="hashtagtext"> # # # Tags</p>
+
+
+   <h2>
+    <%= flash[:notice] %>
+   </h2>
+ </body>
+</html>

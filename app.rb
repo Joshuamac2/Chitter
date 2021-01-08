@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/flash'
+require 'uri'
 require_relative './lib/chitter'
 require_relative '/Users/joshua/makers/chitter/spec/features/database_connection_spec.rb'
 require_relative './lib/comment'
@@ -76,14 +77,14 @@ class ChitterManager < Sinatra::Base
      erb :"users/new"
    end
 
-   # get '/users/new' do
-   #   erb :"users/new"
-   # end
+   get '/users/new' do
+     erb :"users/new"
+   end
 
    post '/users' do
      user = User.create(email: params['email'], password: params['password'])
      session[:user_id] = user.id
-     # redirect '/tweet'
+     redirect '/tweet'
    end
 
    get '/sessions/new' do
