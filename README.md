@@ -1,3 +1,4 @@
+Not complete 
 # Chitter - twitter clone
 
 ![Alt text](public/homepage.png?raw=true "Home page")
