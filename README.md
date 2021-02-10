@@ -1,63 +1,81 @@
-Not complete 
+Not complete
 # Chitter - twitter clone
+
+A twitter clone where users can sign up to post, edit, delete, tag and comment on tweets with timestamps that are unique to the user.
 
 ![Alt text](public/homepage.png?raw=true "Home page")
 ![Alt text](public/mainpage.png?raw=true "Home page")
 
-#User stories
-
-```
-As a time-pressed user
-So that i can quickly go to a web site I regularly visit
-I would like to see a list of Chits
-```
-```
-As a user
-So I can store my tweets as data for later retrieval
-I want to add tweets to my Chitter
-```
-```
-As a user
-So I can remove my tweets from chitter
-I want to delete a tweet
-```
-```
-As a user
-So I can change a tweet in Chitter
-I want to edit my tweet
-```
-```
-As a user
-So I can add to a tweet
-I want to comment on a tweet
-```
-
-```
-As a user
-So that I can categorize my tweets
-I want to add a Tag to a tweet
-```
-```
-As a user
-So that I can find relevant tweets
-I want to filter though tweets by a Tag
-```
-
-
-## How to use
-##(1) Clone this repository and run
+#### Set up
+- 1. Clone this repository and run
 
 ```
 bundle
 ```
-###(2) Connect to psql and create databases
+
+- 2. Set up the databases and run
+
+```
+psql postgres
+```
 ```
 CREATE DATABASE chitter;
-CREATE DATABASE chitter_test;
 ```
-###(3) Table setup 
-Connect to both databases and copy the SQL scripts in given order from `db/migrations`
-### To run the Bookmark Manager app:
+
+- 3. Connect to  database and copy the SQL scripts in given order from db/migrations
+
+- 4. In terminal run
 ```
 rackup
 ```
+- 5. Visit localhost:9292 in browser
+
+#### User stories
+
+```
+STRAIGHT UP
+
+As a user
+So that I can let people know what I am doing  
+I want to post a message (peep) to chitter
+
+As a user
+So that I can see what others are saying  
+I want to see all peeps in reverse chronological order
+
+As a user
+So that I can better appreciate the context of a peep
+I want to see the time at which it was made
+
+As a user
+So that I can post messages on Chitter as me
+I want to sign up for Chitter
+
+HARDER
+
+As a user
+So that only I can post messages on Chitter as me
+I want to log in to Chitter
+
+As a user
+So that I can avoid others posting messages on Chitter as me
+I want to log out of Chitter
+
+ADVANCED
+
+As a user
+So that I can find relevant tweets
+I want to filter though tweets by a Tag
+
+As a user
+In order to start a conversation as a maker I want to reply to a peep from another maker.
+```
+
+#### Spec
+
+- Ruby
+- RSpec
+- Capybara
+- Sinatra / flash
+- PG
+- HTML / CSS

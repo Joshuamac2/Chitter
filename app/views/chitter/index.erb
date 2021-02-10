@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chitter</title>
+    <link rel="stylesheet" href="/css/mainstyle.css" type="text/css"/>
+  </head>
+  <body>
+    <main>
+      <section class="glass">
+        <div class="dashboard">
+          <% if @user %>
+            <div class="logo">
+              <h2>Welcome,
+                <%= @user.username %></h2>
+              <img src="./bird.png" alt="">
+            </div>
+            <div class="flex-container-form1">
+              <form action="/sessions/destroy" method="post">
+                <input type="submit" value="Sign out"/>
+              </form>
+              <form action="/sessions/destroy" method="post">
+                <input type="submit" value="Profile"/>
+              </form>
+              <form action="/tweet" method="post">
+                <input type="text" name="url" placeholder="Whats happening?" class="text"/>
+                <input type="submit" value="Submit" id="submit"/>
+              </form>
+            </div>
+          <% end %>
+        </div>
+        <ul class="tweets">
+          <% @chitter.reverse_each do |tweets| %>
+            <li class="tweet" <%= tweets.id %>>
+              <%= User.find_id(tweets.user_id)['username'] %> -
+              <%= tweets.posted_time %>:
+              <%= tweets.url %>
+              <div class="flex-container-form2">
+                <form class="button" action="/tweet/<%= tweets.id %>" method="post">
+                  <input type='hidden' name='_method' value='DELETE'/>
+                  <input type="submit" value="Delete"/>
+                </form>
+                <form class="button" action="/tweet/<%= tweets.id %>/edit" method="get">
+                  <input type="submit" value="Edit"/>
+                </form>
+                <form class="button" action="/tweet/<%= tweets.id %>/comments/new" method="get">
+                  <input type="submit" value="Add Comment"/>
+                </form>
+                <form class="button" action="/tweet/<%= tweets.id %>/tags/new" method="get">
+                  <input type="submit" value="Add Tag"/>
+                </form>
+              </div>
+              <% if tweets.tags.length > 0 %>
+                <div class="tag-container">
+                  <h4>
+                    What's happening</h4>
+                </div>
+                <div class="tag">
+                  <ul class="hashtag">
+                    <% tweets.tags.each do |tag| %>
+                      <li>
+                        <a href="/tags/<%= tag.id %>/tweet">
+                          <%= tag.content %>
+                        </a>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

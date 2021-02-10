@@ -1,0 +1,110 @@
+main {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo img {
+  width: 80%;
+  border-radius: 2rem;
+  height: 90%;
+}
+
+.glass {
+  background: white;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(to right bottom,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.3));
+  z-index: 2;
+  backdrop-filter: blur(2rem);
+  display: flex;
+}
+
+.dashboard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(to right bottom,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.3));
+}
+
+.tweets {
+  flex: 3;
+  position: relative;
+}
+
+.text {
+  background: white;
+  border: none;
+  width: 30%;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+}
+
+.tweet {
+  background: linear-gradient(to right bottom,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.3));
+  width: 40%;
+  padding: 2rem;
+  border-radius: 2rem;
+  height: 50px;
+  margin: 10px 0;
+}
+
+.tag {
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  right: 1.5rem;
+  width: 10rem;
+  z-index: 4;
+}
+
+.tag-container {
+  position: absolute;
+  min-height: 60vh;
+  top: 5.5rem;
+  right: 1rem;
+  background: linear-gradient(to right bottom,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.3));
+  width: 15%;
+  padding: 1rem;
+  border-radius: 2rem;
+}
+
+.flex-container-form1 {
+  position: absolute;
+  display: flex;
+  top: 20rem;
+}
+
+.flex-container-form2 {
+  display: flex;
+  margin: 15px 0;
+}
+
+input {
+  background: white;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 5px;
+  margin: 2px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul.hashtag {
+  list-style-image: url('/hash.png');
+}

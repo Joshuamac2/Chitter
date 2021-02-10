@@ -1,0 +1,20 @@
+require 'sinatra/base'
+require 'sinatra/flash'
+require 'uri'
+
+require_relative 'models/chitter'
+require_relative 'models/comment'
+require_relative 'models/tag'
+require_relative 'models/tweet_tag'
+require_relative 'models/user'
+require_relative 'models/database_connection'
+require_relative 'database_connection_setup.rb'
+
+
+require_relative 'controllers/app_controller.rb'
+require_relative 'controllers/comment_controller.rb'
+require_relative 'controllers/home_controller.rb'
+require_relative 'controllers/sessions_controller.rb'
+require_relative 'controllers/tag_controller.rb'
+require_relative 'controllers/tweet_controller.rb'
+require_relative 'controllers/users_controller.rb'

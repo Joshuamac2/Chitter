@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Chitter</title>
+  <link rel="stylesheet" href="/css/mainstyle.css" type="text/css" />
+  <img class="pic" src="./mainpage.png" >
+ </head>
+
+ <div class="welcome" >
+ <% if @user %>
+    <h2> Welcome <%= @user.email %> !</h2>
+    <form action="/sessions/destroy" method="post">
+      <input type="submit" value="Sign out" id="signout" />
+    </form>
+  <% end %>
+  </div>
+ <body>
+
+   <% @chitter.each do |tweets| %>
+    <li class="tweet" id="tweet-<%= tweets.id %>">
+      <%= tweets.url %>
+      <form action="/tweet/<%= tweets.id %>" method="post">
+        <input type='hidden' name='_method' value='DELETE'/>
+        <input type="submit" value="Delete" id="delete" />
+      </form>
+      <form action="/tweet/<%= tweets.id %>/edit" method="get">
+        <input type="submit" value="Edit" id="edit" />
+      </form>
+      <form action="/tweet/<%= tweets.id %>/comments/new" method="get">
+        <input type="submit" value="Add Comment" id="addcomment" />
+      </form>
+      <form action="/tweet/<%= tweets.id %>/tags/new" method="get">
+        <input type="submit" value="Add Tag" id="addtag" />
+      </form>
+    </li>
+
+
+   <h2>
+    <%= flash[:notice] %>
+   </h2>
+ </body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chitter</title>
+  <link rel="stylesheet" href="/css/style2.css" />
+</head>
+<body>
+
+
+
+  <main>
+    <section class="glass">
+      <div class="dashboard">
+        <div class="user">
+          <img src="./public.png" alt="">
+        </div>
+        <div class="links">
+          <div class="home_page">
+            <img src="bird.png" width="50" height="60" alt="">
+            <h2>home</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="circle1"></div>
+  <div class="circle2"></div>
+</body>
+</html>
+
+
+
+
+
+  <body>
+    <main>
+      <section class="glass">
+        <div class="dashboard">
+          <div class="user">
+            <img src="./images/avatar.png" alt="" />
+            <h3>Simo Edwin</h3>
+            <p>Pro Member</p>
+          </div>
+          <div class="links">
+            <div class="link">
+              <img src="./images/twitch.png" alt="" />
+              <h2>Streams</h2>
+            </div>
+            <div class="link">
+              <img src="./images/steam.png" alt="" />
+              <h2>Games</h2>
+            </div>
+            <div class="link">
+              <img src="./images/upcoming.png" alt="" />
+              <h2>New</h2>
+            </div>
+            <div class="link">
+              <img src="./images/library.png" alt="" />
+              <h2>Library</h2>
+            </div>
+          </div>
+          <div class="pro">
+            <h2>Join pro for free games.</h2>
+            <img src="./images/controller.png" alt="" />
+          </div>
+        </div>
+        <div class="games">
+          <div class="status">
+            <h1>Active Games</h1>
+            <input type="text" />
+          </div>
+          <div class="cards">
+            <div class="card">
+              <img src="./images/assassins.png" alt="" />
+              <div class="card-info">
+                <h2>Assassins Creed Valhalla</h2>
+                <p>PS5 Version</p>
+                <div class="progress"></div>
+              </div>
+              <h2 class="percentage">60%</h2>
+            </div>
+            <div class="card">
+              <img src="./images/sackboy.png" alt="" />
+              <div class="card-info">
+                <h2>Sackboy A Great Advanture</h2>
+                <p>PS5 Version</p>
+                <div class="progress"></div>
+              </div>
+              <h2 class="percentage">60%</h2>
+            </div>
+            <div class="card">
+              <img src="./images/spiderman.png" alt="" />
+              <div class="card-info">
+                <h2>Spiderman Miles Morales</h2>
+                <p>PS5 Version</p>
+                <div class="progress"></div>
+              </div>
+              <h2 class="percentage">60%</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+/* .pic {
+  max-width: 100%;
+  height: auto;
+}
+
+#mytext {
+  position: relative;
+  margin: auto;
+  width: 400px;
+  top: -600px;
+  right: 5px;
+
+  padding: 20px 30px;
+  box-sizing: border-box;
+  border: 6px solid #F0F8FF;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 16px;
+}
+
+.tweet {
+  position: relative;
+  margin: auto;
+  width: 400px;
+  top: -550px;
+  right: 0.5%;
+
+  padding: 4px 5px;
+  box-sizing: border-box;
+  border: 4px solid #F0F8FF;
+  border-radius: 15px;
+  background-color: white;
+  font-size: 16px;
+  box-shadow: 8px 8px #F0F8FF;
+
+}
+
+.tags {
+  position: relative;
+  left: 900px;
+  top: -700px;
+}
+
+
+
+
+ #text {
+  width: 250px;
+  height: 50px;
+  border: 2px solid #ccc;
+}
+
+#submit{
+  background-color: #87CEFA;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 5px;
+  border: 2px solid white;
+}
+
+#submit:hover {
+    background-color: #87CEFA;
+    color: white;
+}
+
+#delete {
+  position: relative;
+  top: 50px;
+  background-color: white;
+  border: 2px solid #87CEFA;
+  border-radius: 10px;
+  color: #87CEFA;
+}
+
+#edit {
+  position: relative;
+  left: 60px;
+  top: 29px;
+  background-color: white;
+  border: 2px solid #87CEFA;
+  border-radius: 10px;
+  color: #87CEFA;
+}
+
+#addcomment {
+  position: relative;
+  left: 105px;
+  top: 8px;
+  background-color: white;
+  border: 2px solid #87CEFA;
+  border-radius: 10px;
+  color: #87CEFA;
+}
+
+#addtag {
+  position: relative;
+  left: 210px;
+  top: -13px;
+  background-color: white;
+  border: 2px solid #87CEFA;
+  border-radius: 10px;
+  color: #87CEFA;
+}
+
+#signout {
+  position: relative;
+  right: 0px;
+  top: 0px;
+  background-color: white;
+  border: 2px solid #87CEFA;
+  border-radius: 10px;
+  color: #87CEFA;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tags:empty {
+  display:none;
+} */
