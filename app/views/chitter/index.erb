@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Chitter</title>
-    <link rel="stylesheet" href="/css/mainstyle.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/mainpage.css" type="text/css"/>
   </head>
   <body>
     <main>
@@ -10,20 +10,20 @@
         <div class="dashboard">
           <% if @user %>
             <div class="logo">
-              <h2>Welcome,
-                <%= @user.username %></h2>
+              <h2>Welcome
+                <%= @user.username %>!</h2>
               <img src="./bird.png" alt="">
             </div>
             <div class="flex-container-form1">
               <form action="/sessions/destroy" method="post">
                 <input type="submit" value="Sign out"/>
               </form>
-              <form action="/sessions/destroy" method="post">
-                <input type="submit" value="Profile"/>
+              <form action="/" method="get">
+                <input type="submit" value="Home"/>
               </form>
               <form action="/tweet" method="post">
                 <input type="text" name="url" placeholder="Whats happening?" class="text"/>
-                <input type="submit" value="Submit" id="submit"/>
+                <input type="submit" value="Submit" class="textbutton" id="submit"/>
               </form>
             </div>
           <% end %>
@@ -31,7 +31,8 @@
         <ul class="tweets">
           <% @chitter.reverse_each do |tweets| %>
             <li class="tweet" <%= tweets.id %>>
-              <%= User.find_id(tweets.user_id)['username'] %> -
+              <%= User.find_id(tweets.user_id)['username'] %>
+              -
               <%= tweets.posted_time %>:
               <%= tweets.url %>
               <div class="flex-container-form2">
@@ -54,17 +55,15 @@
                   <h4>
                     What's happening</h4>
                 </div>
-                <div class="tag">
-                  <ul class="hashtag">
-                    <% tweets.tags.each do |tag| %>
-                      <li>
-                        <a href="/tags/<%= tag.id %>/tweet">
-                          <%= tag.content %>
-                        </a>
-                      </li>
-                    <% end %>
-                  </ul>
-                </div>
+                <ul class="hashtag">
+                  <% tweets.tags.each do |tag| %>
+                    <li>
+                      <a href="/tags/<%= tag.id %>/tweet">
+                        <%= tag.content %>
+                      </a>
+                    </li>
+                  <% end %>
+                </ul>
               <% end %>
             </li>
           <% end %>

@@ -1,10 +1,9 @@
-Not complete
 # Chitter - twitter clone
 
 A twitter clone where users can sign up to post, edit, delete, tag and comment on tweets with timestamps that are unique to the user.
 
-![Alt text](public/homepage.png?raw=true "Home page")
-![Alt text](public/mainpage.png?raw=true "Home page")
+![Alt text](app/public/homepage.png?raw=true "Home page")
+![Alt text](app/public/mainpage.png?raw=true "Home page")
 
 #### Set up
 - 1. Clone this repository and run
